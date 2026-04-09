@@ -1,0 +1,54 @@
+[
+  {
+    "grade": "F10T",
+    "size": "M16",
+    "d": 16,
+    "d_hole": 18,
+    "Ab": 201.1,
+    "Ae": 157,
+    "N0": 117000,
+    "mu": 0.45,
+    "e_min_sheared": 28,
+    "e_min_rolled": 22,
+    "p_min": 40
+  },
+  {
+    "grade": "F10T",
+    "size": "M20",
+    "d": 20,
+    "d_hole": 22,
+    "Ab": 314.2,
+    "Ae": 245,
+    "N0": 182000,
+    "mu": 0.45,
+    "e_min_sheared": 34,
+    "e_min_rolled": 26,
+    "p_min": 50
+  },
+  {
+    "grade": "F10T",
+    "size": "M22",
+    "d": 22,
+    "d_hole": 24,
+    "Ab": 380.1,
+    "Ae": 303,
+    "N0": 226000,
+    "mu": 0.45,
+    "e_min_sheared": 37,
+    "e_min_rolled": 28,
+    "p_min": 55
+  },
+  {
+    "grade": "F10T",
+    "size": "M24",
+    "d": 24,
+    "d_hole": 26,
+    "Ab": 452.4,
+    "Ae": 353,
+    "N0": 262000,
+    "mu": 0.45,
+    "e_min_sheared": 42,
+    "e_min_rolled": 32,
+    "p_min": 60
+  }
+]

@@ -15,7 +15,7 @@ Rhino8 / Grasshopper / Karamba3D との連携を想定。
 単位系: SI（N, mm, N/mm²）  内部計算は全てこの単位系で行う。
 """
 
-__version__ = "0.2.0-alpha"
+__version__ = "0.4.0-alpha"
 
 from jp_struct.sections import (
     HSection,
@@ -42,3 +42,15 @@ from jp_struct.allowable import (
 )
 from jp_struct.check import MemberInput, CheckResult, check_member
 from jp_struct.loads import LoadCase, LoadCombination, STANDARD_COMBINATIONS
+from jp_struct.joints import (
+    BoltSpec,
+    BoltJointInput,
+    BoltJointResult,
+    FilletWeldInput,
+    FilletWeldResult,
+    load_bolt_specs,
+    get_bolt_spec,
+    check_bolt_joint,
+    check_fillet_weld,
+)
+from jp_struct.report import generate_report

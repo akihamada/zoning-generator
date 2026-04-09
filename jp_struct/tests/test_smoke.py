@@ -308,6 +308,121 @@ def test_loads():
     print(f"  OK: 荷重組合せ {len(STANDARD_COMBINATIONS)} ケース")
 
 
+def test_bolt_joint_shear():
+    """高力ボルト摩擦接合（せん断）"""
+    from jp_struct.joints import get_bolt_spec, BoltJointInput, check_bolt_joint
+
+    bolt = get_bolt_spec("M20")
+    assert bolt.N0 == 182000, f"M20 N0={bolt.N0}"
+
+    inp = BoltJointInput(
+        joint_id="J1",
+        bolt_spec=bolt,
+        n_bolts=6,
+        n_friction=2,
+        Q=300e3,  # 300 kN
+        edge_dist=30,
+        bolt_pitch=60,
+        edge_type="rolled",
+        duration="long",
+    )
+    result = check_bolt_joint(inp)
+
+    assert result.Qa_per_bolt > 0
+    assert result.Qa_total > 0
+    assert result.ratio_shear > 0
+    assert result.edge_ok, "縁端距離は十分なはず"
+    assert result.pitch_ok, "ボルト間隔は十分なはず"
+    print(f"  OK: ボルト接合 検定比={result.ratio_max:.4f} 判定={result.judge}")
+    print(f"      Qa(1本)={result.Qa_per_bolt/1000:.1f}kN, "
+          f"Qa(全)={result.Qa_total/1000:.1f}kN")
+
+
+def test_bolt_joint_combined():
+    """高力ボルト摩擦接合（せん断＋引張組合せ）"""
+    from jp_struct.joints import get_bolt_spec, BoltJointInput, check_bolt_joint
+
+    bolt = get_bolt_spec("M22")
+    inp = BoltJointInput(
+        joint_id="J2",
+        bolt_spec=bolt,
+        n_bolts=4,
+        n_friction=1,
+        Q=100e3,
+        T=80e3,
+        edge_dist=40,
+        bolt_pitch=60,
+        duration="long",
+    )
+    result = check_bolt_joint(inp)
+    assert result.ratio_combined > result.ratio_shear, "組合せ > 純せん断のはず"
+    assert result.ratio_combined > result.ratio_tension, "組合せ > 純引張のはず"
+    print(f"  OK: 組合せ検定 ratio={result.ratio_combined:.4f} "
+          f"(shear={result.ratio_shear:.4f}, tension={result.ratio_tension:.4f})")
+
+
+def test_bolt_edge_distance_ng():
+    """縁端距離不足のNG判定"""
+    from jp_struct.joints import get_bolt_spec, BoltJointInput, check_bolt_joint
+
+    bolt = get_bolt_spec("M20")
+    inp = BoltJointInput(
+        joint_id="J-NG",
+        bolt_spec=bolt,
+        n_bolts=4,
+        n_friction=1,
+        Q=50e3,
+        edge_dist=20,  # 不足（M20 rolled: 26mm必要）
+        bolt_pitch=60,
+        edge_type="rolled",
+        duration="long",
+    )
+    result = check_bolt_joint(inp)
+    assert not result.edge_ok, "縁端距離不足でNG"
+    assert result.judge == "NG"
+    print(f"  OK: 縁端距離不足を検出 → NG, msgs={result.messages}")
+
+
+def test_fillet_weld():
+    """隅肉溶接の検定"""
+    from jp_struct.joints import FilletWeldInput, check_fillet_weld
+
+    inp = FilletWeldInput(
+        joint_id="W1",
+        s=6,
+        L_total=200,
+        F=235,
+        Q=120e3,
+        duration="long",
+    )
+    result = check_fillet_weld(inp)
+
+    assert abs(result.a - 4.2) < 0.01, f"のど厚 a={result.a} (期待: 4.2)"
+    assert abs(result.L_eff - 188.0) < 0.01, f"有効長さ L_eff={result.L_eff}"
+    assert result.fw > 0
+    assert result.Qa > 0
+    assert result.ratio > 0
+    print(f"  OK: 隅肉溶接 a={result.a}mm, L_eff={result.L_eff}mm, "
+          f"Qa={result.Qa/1000:.1f}kN, ratio={result.ratio:.4f} {result.judge}")
+
+
+def test_fillet_weld_short_length():
+    """隅肉溶接の有効長さ不足"""
+    from jp_struct.joints import FilletWeldInput, check_fillet_weld
+
+    inp = FilletWeldInput(
+        joint_id="W-short",
+        s=6,
+        L_total=50,  # 短い → L_eff = 50-12 = 38 < max(60, 40)=60
+        F=235,
+        Q=10e3,
+        duration="long",
+    )
+    result = check_fillet_weld(inp)
+    assert len(result.messages) > 0, "有効長さ不足の警告があるはず"
+    print(f"  OK: 有効長さ不足を検出, msgs={result.messages}")
+
+
 def test_import_all():
     """全モジュールのインポート確認"""
     import jp_struct
@@ -317,6 +432,9 @@ def test_import_all():
     assert hasattr(jp_struct, "BHSection")
     assert hasattr(jp_struct, "BoxSection")
     assert hasattr(jp_struct, "width_thickness_rank_box")
+    assert hasattr(jp_struct, "check_bolt_joint")
+    assert hasattr(jp_struct, "check_fillet_weld")
+    assert hasattr(jp_struct, "generate_report")
     print(f"  OK: jp_struct v{jp_struct.__version__} インポート成功")
 
 
@@ -342,6 +460,11 @@ def run_all():
         ("部材検定(H形鋼柱)", test_check_member_column_h),
         ("短期検定", test_check_short_term),
         ("荷重組合せ", test_loads),
+        ("ボルト接合(せん断)", test_bolt_joint_shear),
+        ("ボルト接合(組合せ)", test_bolt_joint_combined),
+        ("ボルト縁端距離NG", test_bolt_edge_distance_ng),
+        ("隅肉溶接", test_fillet_weld),
+        ("隅肉溶接(長さ不足)", test_fillet_weld_short_length),
     ]
 
     print("=" * 60)
