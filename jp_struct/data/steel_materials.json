@@ -1,0 +1,197 @@
+[
+  {
+    "name": "SS400",
+    "standard": "JIS G 3101",
+    "F_by_thickness": [
+      {
+        "t_max": 40,
+        "F": 235
+      },
+      {
+        "t_max": 75,
+        "F": 215
+      }
+    ],
+    "E": 205000,
+    "G": 79000,
+    "density": 7850,
+    "note": "一般構造用圧延鋼材"
+  },
+  {
+    "name": "SN400A",
+    "standard": "JIS G 3136",
+    "F_by_thickness": [
+      {
+        "t_max": 40,
+        "F": 235
+      },
+      {
+        "t_max": 100,
+        "F": 215
+      }
+    ],
+    "E": 205000,
+    "G": 79000,
+    "density": 7850,
+    "note": "建築構造用圧延鋼材（非溶接部材用）",
+    "weldable": false
+  },
+  {
+    "name": "SN400B",
+    "standard": "JIS G 3136",
+    "F_by_thickness": [
+      {
+        "t_max": 40,
+        "F": 235
+      },
+      {
+        "t_max": 100,
+        "F": 215
+      }
+    ],
+    "E": 205000,
+    "G": 79000,
+    "density": 7850,
+    "note": "建築構造用圧延鋼材",
+    "weldable": true
+  },
+  {
+    "name": "SN400C",
+    "standard": "JIS G 3136",
+    "F_by_thickness": [
+      {
+        "t_max": 40,
+        "F": 235
+      },
+      {
+        "t_max": 100,
+        "F": 215
+      }
+    ],
+    "E": 205000,
+    "G": 79000,
+    "density": 7850,
+    "note": "建築構造用圧延鋼材（板厚方向特性保証）",
+    "weldable": true,
+    "through_thickness": true
+  },
+  {
+    "name": "SN490B",
+    "standard": "JIS G 3136",
+    "F_by_thickness": [
+      {
+        "t_max": 40,
+        "F": 325
+      },
+      {
+        "t_max": 100,
+        "F": 295
+      }
+    ],
+    "E": 205000,
+    "G": 79000,
+    "density": 7850,
+    "note": "建築構造用圧延鋼材（高強度）",
+    "weldable": true
+  },
+  {
+    "name": "SN490C",
+    "standard": "JIS G 3136",
+    "F_by_thickness": [
+      {
+        "t_max": 40,
+        "F": 325
+      },
+      {
+        "t_max": 100,
+        "F": 295
+      }
+    ],
+    "E": 205000,
+    "G": 79000,
+    "density": 7850,
+    "note": "建築構造用圧延鋼材（高強度・板厚方向特性保証）",
+    "weldable": true,
+    "through_thickness": true
+  },
+  {
+    "name": "BCR295",
+    "standard": "国土交通大臣認定",
+    "F_by_thickness": [
+      {
+        "t_max": 30,
+        "F": 295
+      }
+    ],
+    "E": 205000,
+    "G": 79000,
+    "density": 7850,
+    "note": "冷間ロール成形角形鋼管柱（Building Column Roll）",
+    "weldable": true,
+    "section_type": "box"
+  },
+  {
+    "name": "BCP235",
+    "standard": "国土交通大臣認定",
+    "F_by_thickness": [
+      {
+        "t_max": 40,
+        "F": 235
+      }
+    ],
+    "E": 205000,
+    "G": 79000,
+    "density": 7850,
+    "note": "冷間プレス成形角形鋼管柱（Building Column Press）",
+    "weldable": true,
+    "section_type": "box"
+  },
+  {
+    "name": "BCP325",
+    "standard": "国土交通大臣認定",
+    "F_by_thickness": [
+      {
+        "t_max": 40,
+        "F": 325
+      }
+    ],
+    "E": 205000,
+    "G": 79000,
+    "density": 7850,
+    "note": "冷間プレス成形角形鋼管柱（Building Column Press, 高強度）",
+    "weldable": true,
+    "section_type": "box"
+  },
+  {
+    "name": "STKR400",
+    "standard": "JIS G 3466",
+    "F_by_thickness": [
+      {
+        "t_max": 12,
+        "F": 235
+      }
+    ],
+    "E": 205000,
+    "G": 79000,
+    "density": 7850,
+    "note": "一般構造用角形鋼管",
+    "weldable": true,
+    "section_type": "box"
+  },
+  {
+    "name": "STKR490",
+    "standard": "JIS G 3466",
+    "F_by_thickness": [
+      {
+        "t_max": 12,
+        "F": 325
+      }
+    ],
+    "E": 205000,
+    "G": 79000,
+    "density": 7850,
+    "note": "一般構造用角形鋼管（高強度）",
+    "weldable": true,
+    "section_type": "box"
+  }
+]
