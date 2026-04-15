@@ -1,0 +1,28 @@
+# ~/.ssh/config entry for connecting to the Mac mini over Tailscale SSH.
+#
+# Copy this block into your client's ~/.ssh/config (MacBook) and replace
+# <MAC_USER> with the macOS username on the Mac mini.
+#
+# With Tailscale MagicDNS enabled, "mac-mini" resolves to the tailnet host
+# directly; no port-forwarding or public DNS is required. Key management
+# is handled by Tailscale itself, so no local private key is strictly
+# necessary - IdentitiesOnly is set as a safety net to avoid offering
+# every key in your agent.
+#
+# If you prefer to jump straight into the persistent tmux session, uncomment
+# the RemoteCommand / RequestTTY lines at the bottom.
+
+Host mac-mini
+    HostName mac-mini
+    User <MAC_USER>
+    IdentitiesOnly yes
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+    # Keep connections multiplexed for snappy re-opens
+    ControlMaster auto
+    ControlPath ~/.ssh/cm-%r@%h:%p
+    ControlPersist 10m
+
+    # --- optional: auto-attach to the Claude tmux session on login ---
+    # RemoteCommand tmux attach -t claude || tmux new -s claude
+    # RequestTTY yes

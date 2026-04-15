@@ -1,0 +1,43 @@
+// Tailscale ACL for Mac mini remote access
+//
+// Paste this into https://login.tailscale.com/admin/acls/file
+// after replacing the placeholders below:
+//
+//   <YOUR_EMAIL>   Your Tailscale login email (e.g. "aki@example.com")
+//   <MAC_USER>     macOS username on the Mac mini (e.g. "aki")
+//
+// Tag the Mac mini at startup with:
+//   sudo tailscale up --ssh --advertise-tags=tag:mac-mini
+//
+// "action": "check" requires periodic web re-auth (default 12h).
+// Change to "accept" if you want passwordless access from trusted devices
+// (e.g. your iPhone in Termius where opening a browser is awkward).
+{
+  "tagOwners": {
+    "tag:mac-mini": ["<YOUR_EMAIL>"]
+  },
+
+  "ssh": [
+    {
+      "action": "check",
+      "src":    ["<YOUR_EMAIL>"],
+      "dst":    ["tag:mac-mini"],
+      "users":  ["<MAC_USER>", "root"]
+    }
+  ],
+
+  "acls": [
+    {
+      "action": "accept",
+      "src":    ["<YOUR_EMAIL>"],
+      "dst":    ["tag:mac-mini:*"]
+    }
+  ],
+
+  "nodeAttrs": [
+    {
+      "target": ["tag:mac-mini"],
+      "attr":   ["funnel"]
+    }
+  ]
+}
