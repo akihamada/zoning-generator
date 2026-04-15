@@ -31,9 +31,17 @@ aha-cad-ops/
 ├── detail-library/              # 再利用ディテールDB
 │   └── index.md
 ├── projects/                    # 案件別ワークスペース
+│   └── SAMPLE-001/              # サンプル案件構成（テンプレ兼参照）
 ├── feedback-log/                # 運用フィードバック
 │   ├── common-mistakes.md       # 越側頻出ミス
 │   └── monitoring-findings.md   # 現場フィードバック
+├── onboarding-vn/               # 越側オンボーディング資料（英語）
+│   ├── README.md
+│   ├── 01-welcome-and-workflow.md
+│   ├── 02-standards-quick-reference.md
+│   ├── 03-checklists-quick-reference.md
+│   ├── 04-daily-cycle.md
+│   └── 05-glossary-jp-en-vi.md
 └── scripts/                     # Dynamo/GH自動化
 ```
 
@@ -123,7 +131,7 @@ aha-cad-ops/
 2. ✅ ディレクトリ構成の初期化
 3. ✅ チェックリストL1〜L4の初版
 4. ✅ 表記マニュアル・命名規則の策定
-5. ⬜ 指示書テンプレv1作成
-6. ⬜ パイロット案件試験運用
+5. ✅ 指示書テンプレv1作成（task-brief / rfi-form / drawing-list / lod-matrix）
+6. 🟡 パイロット案件試験運用（SAMPLE-001 構成完成、実案件適用待ち）
 7. ⬜ ディテールDB初期構築（目標100点）
-8. ⬜ 越側オンボーディング資料（英訳版）
+8. ✅ 越側オンボーディング資料v1（`onboarding-vn/` 01〜05）
