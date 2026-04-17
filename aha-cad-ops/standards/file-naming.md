@@ -1,5 +1,11 @@
 # ファイル命名規則 / File Naming Convention
 
+> **一言で** / TL;DR
+> 全ファイルは `<Project>-<Originator>-<Volume>-<Level>-<Type>-<Role>-<Number>[-<Status>-<Rev>]` 形式。
+> 例：`ARIA-AHA-ZZ-01-DR-A-0201-S2-P03.dwg`
+>
+> **誰が読む**：PM（案件コード決定時）／越側オペ（毎日参照）／若手（全体理解用）
+
 **準拠規格**：ISO 19650-2（情報マネジメント／CDE）をベースに、AHA運用に合わせて拡張。
 
 ## 基本構造 / Base Structure

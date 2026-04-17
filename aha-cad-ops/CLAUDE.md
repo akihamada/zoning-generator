@@ -1,5 +1,8 @@
 # CLAUDE.md — AHA CAD Operations
 
+> **👤 人間の方へ** — 運用の始め方・使い方は **[`README.md`](./README.md)** を参照。役割別のクイックスタートがあります。
+> **🤖 Claude Code（AI）** — 本ファイルはセッション開始時に自動で読み込まれる文脈です。
+
 Aki Hamada Architects（AHA）のベトナムCADオペレーター外注運用を支える管理システム。Claude Code はこのファイルをセッション開始時に読み、以下の文脈で作業する。
 
 ## 目的

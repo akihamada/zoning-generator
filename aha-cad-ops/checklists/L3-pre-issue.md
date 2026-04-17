@@ -1,5 +1,11 @@
 # L3: 出図前最終チェック / Pre-Issue Final Check
 
+> **一言で** / TL;DR
+> 出図 2〜3日前の最終 QC。**全項目 PASS** が出図条件。1項目でも NG なら出図延期。
+>
+> **誰が主担当**：日本側PM（最終サイン）／越側オペ（セルフチェック）
+> **関連**：`checklists/L2-milestone-30-60-90.md`（前提：90% PASS）／`checklists/L4-aha-specific.md`（AHA要素の全PASS確認）
+
 **階層** / Level: **L3**
 **実施タイミング** / Timing: 出図の 2〜3営業日前
 **責任者** / Owner: 日本側PM（最終サイン）

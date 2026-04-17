@@ -1,5 +1,13 @@
 # レイヤ命名規則 / Layer Naming Convention
 
+> **一言で** / TL;DR
+> 全レイヤは `<Discipline>-<Major>-<Minor>-<Status>` 形式（英大文字・ハイフン区切り）。
+> 例：`A-WALL-EXTR-N`（Architecture・Wall・Exterior・New）
+>
+> **誰が読む**：越側オペ（作図時常時）／PM・設計リーダー（監修時）
+>
+> **ルール厳守**：独自レイヤ追加禁止 → 必要なら RFI
+
 **準拠規格**：ISO 13567（Technical product documentation — Organization and naming of layers for CAD）をベースに、AHA運用に合わせて簡略化。
 
 ## 基本構造 / Base Structure

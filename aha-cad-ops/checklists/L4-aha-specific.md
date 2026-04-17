@@ -1,5 +1,11 @@
 # L4: AHA特有要素チェック / AHA-Specific Items Check
 
+> **一言で** / TL;DR
+> AHA 一品生産要素の専用チェック（**6カテゴリ**：3DP / IRR / KIN / SEN / ART / HIS）。該当要素のみ抜粋して使用。
+>
+> **誰が主担当**：設計リーダー（PMと合議）
+> **関連**：`standards/revit-family-rules.md`（特殊要素のファミリ仕様）／`detail-library/`（再利用候補）
+
 **階層** / Level: **L4**
 **実施タイミング** / Timing: 該当要素を含む案件の実施設計全段階（L2の60%・90%、L3で必須確認）
 **責任者** / Owner: 設計リーダー（PMと合議）

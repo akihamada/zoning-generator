@@ -1,5 +1,13 @@
 # Revitファミリ作成ルール / Revit Family Rules
 
+> **一言で** / TL;DR
+> ファミリ名は `AHA_<Category>_<Descriptor>_<Variant>`。Shared Parameters は中央管理のみ使用、独自追加禁止。
+> AHA 特殊要素（3DP / IRR / KIN / SEN / ART）には専用必須パラメータあり。
+>
+> **誰が読む**：Revit を触る全員（PM・越側オペ・設計リーダー）
+>
+> **最注意事項**：Rhino → Revit は DirectShape 経由のみ。Edit Family でのメッシュ編集は禁止。
+
 AHA プロジェクトで使用する Revit ファミリの作成・命名・管理規則。
 
 ## 基本方針
